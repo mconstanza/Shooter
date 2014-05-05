@@ -113,7 +113,6 @@ class Ship(pygame.sprite.Sprite):
     def reset(self, xy):
         self.rect.centerx, self.rect.centery = xy
 
-
 class HealthBar(object):
     def __init__(self, window, location):
         self.window = window
@@ -207,7 +206,6 @@ class KillBar(object):
                                 30)
     # draw bar rectangle
         pygame.draw.rect(self.window, self.color, self.bar, 0)
-
 
 class Shot(pygame.sprite.Sprite):
     '''
@@ -376,7 +374,6 @@ class EnemyShip(pygame.sprite.Sprite):
             self.enemyshot = BasicEnemyShot((self.rect.centerx, self.rect.bottom), 7)
             game.enemyshots.add(self.enemyshot)
 
-
 class EnemySpawner(object):
     '''
     Using this class to spawn enemies with a copy of the sprites
@@ -391,7 +388,6 @@ class EnemySpawner(object):
     def getEnemyShip(self, xy):
         return EnemyShip(xy)
 
-
 class Camera(object):
     def __init__(self, camera_func, width, height):
         self.camera_func = camera_func
@@ -403,6 +399,70 @@ class Camera(object):
     def update(self, target):
         self.state = self.camera_func(self.state, target.rect)
 
+class StartScreen(object):
+    '''
+    The Title screen for the game
+    '''
+    def __init__(self):
+        # Start Screen Music
+        pygame.mixer.pre_init(44100, -16, 2, 2048)
+
+        self.music = pygame.mixer.music.load('02 Chemical Reaction.mp3')
+        pygame.mixer.music.play()
+
+
+        start = False
+
+        def render(self, screen):
+            # Create Title text
+            self.startScreenFont = pygame.font.Font('freesansbold.ttf', 44)
+            self.startScreenSurf = self.startScreenFont.render('GENERIC SHOOTER', True, white)
+            self.degrees1 = 0
+
+        # Create 'Press Space to Play' text
+
+            self.presstoPlayFont = pygame.font.Font('freesansbold.ttf', 20)
+            self.presstoPlaySurf = self.presstoPlayFont.render('Press Space to Play!', True, white)
+
+        # Render surfaces
+            self.window.fill(black)
+            self.startScreenSurf = pygame.transform.rotate(self.startScreenSurf, self.degrees1)
+            placement_rect1 = self.startScreenSurf.get_rect()
+            placement_rect1.center = (screen_width / 2, screen_height / 2)
+
+            self.placement_presstoPlay = pygame.transform.rotate(self.presstoPlaySurf, self.degrees1)
+            placement_presstoPlayRect = self.placement_presstoPlay.get_rect()
+            placement_presstoPlayRect.center = (screen_width / 2, (screen_height / 2) + (screen_height / 4))
+
+            # Draw them to the screen
+            screen.blit(self.placement_presstoPlay, placement_presstoPlayRect)
+            screen.blit(self.startScreenSurf, placement_rect1)
+
+
+        def handle_events(self):
+
+            while start == False:
+             # poll for events
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+
+                # handle user input
+                    elif event.type == pygame.KEYDOWN:
+
+                        if event.key == pygame.K_ESCAPE:
+                            pygame.quit()
+
+                        elif event.key == pygame.K_SPACE:
+                            pygame.mixer.music.stop()
+                            start = True
+
+class LevelLoader(object):
+    '''
+    Manages loading all the data unique to each level
+    '''
+    def __init__(self):
+        self.go_to(StartScreen())
 
 class Game(object):
     '''Handles initialization of PyGame and sets up game'''
@@ -483,8 +543,6 @@ class Game(object):
          # a sprite rendering group for enemies' shots
         self.enemyshots = pygame.sprite.RenderUpdates()
         pygame.display.flip()
-
-
 
     def spawnBasicEnemy(self):
         self.enemyship = self.enemyspawner.getEnemyShip(random.randrange(1, 4, 1))

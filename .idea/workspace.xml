@@ -2,60 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dba44be4-9e28-4240-aa19-43edf10560ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/02 Chemical Reaction.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Background-4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Background-4vertical.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Background-4vertical2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Donkey Kong Country 2 - Stickerbrush Symphony Acapella.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/M484ExplosionSet1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/basicenemyship.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beamblue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beamlittle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beamred.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beams.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom1.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom2.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom3.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom4.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom5.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom6.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom7.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom8.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/boom9.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/explosion7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/healthbar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/laser1.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/playership.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ship.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ships_asteroids_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ships_biomech_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ships_human_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ships_saucer_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ships_void_0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0001.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0002.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0003.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0004.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0005.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0006.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0007.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0008.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0009.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0010.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smallfighter0011.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Shooter.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shooter.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shooter.py" afterPath="$PROJECT_DIR$/Shooter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Shooter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,8 +29,19 @@
       <file leaf-file-name="Shooter.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Shooter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13787">
-              <folding />
+            <state line="437" column="28" selection-start="14305" selection-end="14305" vertical-scroll-proportion="0.6422222" vertical-offset="918" max-vertical-offset="8687">
+              <folding>
+                <element signature="e#797#3466#0" expanded="false" />
+                <element signature="e#3497#4997#0" expanded="false" />
+                <element signature="e#4433#4510#0" expanded="false" />
+                <element signature="e#4598#4997#0" expanded="false" />
+                <element signature="e#5026#6718#0" expanded="false" />
+                <element signature="e#6758#7852#0" expanded="false" />
+                <element signature="e#7886#8761#0" expanded="false" />
+                <element signature="e#8806#12159#0" expanded="false" />
+                <element signature="e#12193#12503#0" expanded="false" />
+                <element signature="e#12531#12847#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,6 +55,18 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ClassRestructure" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Shooter.py" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -153,17 +124,36 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Shooter">
+    <configuration default="false" name="Shooter" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Shooter" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Shooter.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -285,7 +275,14 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="0" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.Shooter" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.Shooter" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
@@ -314,7 +311,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="816" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="816" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -322,11 +319,11 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24765626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32957748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -349,6 +346,7 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -361,8 +359,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shooter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13787">
-          <folding />
+        <state line="437" column="28" selection-start="14305" selection-end="14305" vertical-scroll-proportion="0.6422222" vertical-offset="918" max-vertical-offset="8687">
+          <folding>
+            <element signature="e#797#3466#0" expanded="false" />
+            <element signature="e#3497#4997#0" expanded="false" />
+            <element signature="e#4433#4510#0" expanded="false" />
+            <element signature="e#4598#4997#0" expanded="false" />
+            <element signature="e#5026#6718#0" expanded="false" />
+            <element signature="e#6758#7852#0" expanded="false" />
+            <element signature="e#7886#8761#0" expanded="false" />
+            <element signature="e#8806#12159#0" expanded="false" />
+            <element signature="e#12193#12503#0" expanded="false" />
+            <element signature="e#12531#12847#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
