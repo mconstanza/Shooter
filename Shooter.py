@@ -106,6 +106,7 @@ class Ship(pygame.sprite.Sprite):
             else:
                 pass
 
+
     def update(self, sprites, enemies, enemyshots, healthbar, ticks):
         self.move(self.xvelocity, self.yvelocity)
         self.shotCollision(sprites, enemyshots, healthbar)
@@ -182,6 +183,7 @@ class KillBar(object):
         self.enemieskilled = 0
 
 
+
     def increase_kill_bar(self, enemieskilled):
 
         self.enemieskilled = enemieskilled
@@ -204,6 +206,58 @@ class KillBar(object):
         self.bar = pygame.Rect(self.topleft[0],\
                                self.topleft[1],\
                                 self.enemieskilled * 2.8,\
+                                30)
+    # draw bar rectangle
+        pygame.draw.rect(screen, self.color, self.bar, 0)
+
+class BossBar(HealthBar):
+
+    def __init__(self, screen, location, bosshealth):
+
+        self.image = pygame.image.load('healthbar.png').convert()
+        self.location = location
+        self.barrect = pygame.draw.rect(screen, red,(self.location[0], self.location[1], 200, 50), 0)
+        self.rect = self.image.get_rect()
+
+        # boundaries for bar fill
+        self.topleft = (360, 10)
+        self.topright = (640, 10)
+        self.bottomleft = (360, 50)
+        self.bottomright = (640, 50)
+        self.height = abs(self.topleft[1] - self.bottomleft[1])
+        self.width = abs(self.topleft[0] - self.topright[0])
+        self.color = red
+        self.health = bosshealth
+
+    def increase_health(self, amount):
+        self.health += amount
+        if self.health > self.maxhealth:
+            self.health = self.maxhealth
+
+    def decrease_health(self, amount):
+        self.health -= amount
+        if self.health < 0:
+            self.health = 0
+
+    def convert_health(self, bosshealth, maxbosshealth):
+        '''
+        convert boss health to a percentage of 280, the pixel-width of the bossbar
+        '''
+        if bosshealth <= 0:
+            return 0
+        else:
+            return (bosshealth * 280)/maxbosshealth
+
+    def is_dead(self):
+        return self.health == 0
+
+    def display(self, screen, bosshealth, maxbosshealth):
+       # load bar background
+        screen.blit(self.image, (self.location[0], self.location[1]))
+    # build bar rectangle
+        self.bar = pygame.Rect(self.topleft[0],\
+                               self.topleft[1] + 10,\
+                               self.convert_health(bosshealth, maxbosshealth),\
                                 30)
     # draw bar rectangle
         pygame.draw.rect(screen, self.color, self.bar, 0)
@@ -277,13 +331,60 @@ class BasicEnemyShot(Shot):
                 self.kill()
 
         #---movement---
-        self.move(self.yvelocity)
+            self.move(self.yvelocity)
+
+class Hadouken(BasicEnemyShot):
+
+    damage = 25
+
+    def __init__(self, xy, movementspeed):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('hadouken.png').convert_alpha()
+        self.rect = self.image.get_rect()
+        self.maxspeed = 15
+        self.yvelocity = 0
+        self.lifetime = 0.0 # seconds
+
+         # set position
+        self.rect.centerx, self.rect.centery = xy
+
+        # shot movement speed
+        self.movementspeed = movementspeed
+        self.yvelocity += self.movementspeed
+
+        def update(self, seconds = 0.0):
+            '''
+            Called to update the sprite. Do this every frame. Handles
+            moving the sprite by its velocity.
+            '''
+        #---kill if too old---
+            self.lifetime += seconds
+            if self.lifetime > Shot.maxlifetime:
+                self.kill()
+
+        #---movement---
+            self.move(self.yvelocity)
+
+class PowerUp(pygame.sprite.Sprite):
+    def __init__(self):
+        pass
+    def update(self):
+        raise NotImplementedError
+    def move(self):
+        raise NotImplementedError
+
+class TriBeam(PowerUp):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('TriBeamPowerUp.png').convert_alpha()
+        self.rect = self.image.get_rect()
+
+
 
 class EnemyShip(pygame.sprite.Sprite):
     '''
     Class to create basic enemy ships.
     '''
-    health = 1
 
     def __init__(self, spawnpoint):
         '''
@@ -416,7 +517,10 @@ class Scene(object):
         raise NotImplementedError
 
 class Level(Scene):
-
+    '''
+    Define a 'bosstrigger' stating how many enemies must be killed
+    before the boss appears.
+    '''
     def __init__(self):
         pass
 
@@ -428,6 +532,27 @@ class Level(Scene):
 
     def handle_events(self):
         raise NotImplementedError
+
+    def boss_check(self, bosstrigger, enemieskilled, screen):
+
+        if enemieskilled >= bosstrigger:
+            return True
+        else:
+            return False
+
+class BossMode(Scene):
+    def __init__(self, screen):
+        pass
+
+    def boss_beaten(self, bosshealth, bossmaxhealth):
+        if bosshealth - bossmaxhealth <= -(bossmaxhealth):
+            return True
+        else:
+            return False
+
+    def boss_time(self):
+        raise NotImplementedError
+
 
 class StartScreen(Scene):
     '''
@@ -487,7 +612,7 @@ class StartScreen(Scene):
 
                 elif event.key == pygame.K_SPACE:
                     pygame.mixer.music.stop()
-                    manager.go_to(LevelOne(1, screen))
+                    self.manager.go_to(LevelOne(1, screen))
 
 
     def update(self, screen):
@@ -526,7 +651,6 @@ class Game(object):
         '''Runs the game. Contains the game loop.'''
 
         global screen, screen_width, screen_height, manager
-        print "Starting Event Loop"
 
         pygame.init()
 
@@ -563,7 +687,7 @@ class Game(object):
                 # update title bar with fps
                 pygame.display.set_caption('Shooter  %d fps' % timer.get_fps())
 
-                # check if dead
+
                 manager.scene.handle_events(pygame.event.get())
                 manager.scene.update(screen)
                 manager.scene.render(screen)
