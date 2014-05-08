@@ -19,13 +19,7 @@ black = [0, 0, 0]
 blue = [15, 7, 166]
 white = [255, 255, 255]
 red = [89, 0 ,1]
-explosion =  pyganim.PygAnimation([('explosion1.png', .1),
-                                           ('explosion2.png', .1),
-                                            ('explosion3.png', .1),
-                                            ('explosion4.png', .1),
-                                            ('explosion5.png', .1),
-                                            ('explosion6.png', .1),
-                                            ('explosion7.png', .1)])
+
 
 class Ship(pygame.sprite.Sprite):
     '''
@@ -50,8 +44,14 @@ class Ship(pygame.sprite.Sprite):
         self.xvelocity = 0
         self.yvelocity = 0
 
+        # beam type
+        self.beam = "default"
+
         # current state, alive or dead
         self.state = "alive"
+
+        # sounds
+        self.lasersound = pygame.mixer.Sound('laser1.wav')
 
         # last time collided with ememy
         self.lastcollision = 0
@@ -106,14 +106,30 @@ class Ship(pygame.sprite.Sprite):
             else:
                 pass
 
+    def powerupCollision(self, playerspritegroup, powerupgroup):
+        for self in pygame.sprite.groupcollide(playerspritegroup, powerupgroup, False, False):
+            for powerup in pygame.sprite.groupcollide(powerupgroup, playerspritegroup, True, False):
+                self.beam = powerup.type
 
-    def update(self, sprites, enemies, enemyshots, healthbar, ticks):
+
+    def update(self, sprites, enemies, enemyshots, healthbar, powerupgroup, ticks):
         self.move(self.xvelocity, self.yvelocity)
         self.shotCollision(sprites, enemyshots, healthbar)
         self.enemyCollision(sprites, enemies, healthbar, ticks)
+        self.powerupCollision(sprites, powerupgroup)
 
     def reset(self, xy):
         self.rect.centerx, self.rect.centery = xy
+
+    def firecurrentshot(self, shotsgroup):
+        if self.beam == "default":
+            self.shot = Shot((self.rect.right - 18.5, self.rect.top), -10)
+            self.shot = Shot((self.rect.right - 18.5, self.rect.top), -10)
+            shotsgroup.add(self.shot)
+            self.lasersound.play()
+        elif self.beam == "tribeam":
+            self.shot = TriBeam(shotsgroup, self)
+            self.lasersound.play()
 
 class HealthBar(object):
     def __init__(self, screen, location):
@@ -181,8 +197,6 @@ class KillBar(object):
         self.minkill = 0
         self.maxkill = self.width
         self.enemieskilled = 0
-
-
 
     def increase_kill_bar(self, enemieskilled):
 
@@ -304,6 +318,17 @@ class Shot(pygame.sprite.Sprite):
         #---movement---
         self.move(self.yvelocity)
 
+class TriBeam(object):
+
+    def __init__(self, shotsgroup, ship):
+        self.yvelocity = -7
+        self.leftshot = Shot((ship.rect.centerx, ship.rect.top),-7 )
+        shotsgroup.add(self.leftshot)
+        self.rightshot = Shot((ship.rect.left, ship.rect.top), -7)
+        shotsgroup.add(self.rightshot)
+        self.centershot = Shot((ship.rect.right, ship.rect.top), -7)
+        shotsgroup.add(self.centershot)
+
 class BasicEnemyShot(Shot):
     def __init__(self, xy, movementspeed):
         pygame.sprite.Sprite.__init__(self)
@@ -367,19 +392,40 @@ class Hadouken(BasicEnemyShot):
 
 class PowerUp(pygame.sprite.Sprite):
     def __init__(self):
-        pass
+        pygame.sprite.Sprite.__init__(self)
     def update(self):
         raise NotImplementedError
     def move(self):
         raise NotImplementedError
 
-class TriBeam(PowerUp):
+class TriBeamPowerup(PowerUp):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('TriBeamPowerUp.png').convert_alpha()
         self.rect = self.image.get_rect()
 
+        # type
+        self.type = "tribeam"
+        # speed and velocity
+        self.yvelocity = 5
 
+        # lifetime
+        self.maxlifetime = 5
+        self.lifetime = 0.0 # seconds
+
+        # set position
+        self.rect.centerx, self.rect.centery = screen_width / 2, 100
+
+    def move(self, yvelocity):
+        self.rect.centery += yvelocity
+
+    def update(self, seconds = 0.0):
+        # kill if too old
+        self.lifetime += seconds
+        if self.lifetime > self.maxlifetime:
+            self.kill()
+
+        self.move(self.yvelocity)
 
 class EnemyShip(pygame.sprite.Sprite):
     '''
@@ -540,6 +586,11 @@ class Level(Scene):
         else:
             return False
 
+    def powerup_roll(self, percentchance):
+        raise NotImplementedError
+    def spawn_powerup(self):
+        raise NotImplementedError
+
 class BossMode(Scene):
     def __init__(self, screen):
         pass
@@ -552,7 +603,6 @@ class BossMode(Scene):
 
     def boss_time(self):
         raise NotImplementedError
-
 
 class StartScreen(Scene):
     '''
@@ -617,7 +667,6 @@ class StartScreen(Scene):
 
     def update(self, screen):
         pass
-
 
 class SceneManager(object):
     '''

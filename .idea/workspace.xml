@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dba44be4-9e28-4240-aa19-43edf10560ee" name="Default" comment="New class structure is working with better support for scene/level changing.&#10;&#10;Fixed sprite transparency issue.">
+    <list default="true" id="dba44be4-9e28-4240-aa19-43edf10560ee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shooter.py" afterPath="$PROJECT_DIR$/Shooter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -26,34 +26,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Shooter.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Shooter.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shooter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="379" column="41" selection-start="11942" selection-end="11942" vertical-scroll-proportion="0.759434" vertical-offset="6121" max-vertical-offset="14331">
+            <state line="21" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1054">
               <folding>
-                <element signature="e#21#34#0" expanded="true" />
+                <element signature="e#361#4028#0" expanded="false" />
+                <element signature="e#4059#5547#0" expanded="false" />
+                <element signature="e#5576#7232#0" expanded="false" />
+                <element signature="e#7265#9016#0" expanded="false" />
+                <element signature="e#9056#10150#0" expanded="false" />
+                <element signature="e#10180#10567#0" expanded="false" />
+                <element signature="e#10601#11480#0" expanded="false" />
+                <element signature="e#11519#12416#0" expanded="false" />
+                <element signature="e#12459#12632#0" expanded="false" />
+                <element signature="e#12669#13405#0" expanded="false" />
+                <element signature="e#13450#16817#0" expanded="false" />
+                <element signature="e#16851#17161#0" expanded="false" />
+                <element signature="e#17189#17505#0" expanded="false" />
+                <element signature="e#17533#17759#0" expanded="false" />
+                <element signature="e#17785#18432#0" expanded="false" />
+                <element signature="e#18461#18738#0" expanded="false" />
+                <element signature="e#18770#20799#0" expanded="false" />
+                <element signature="e#20833#21063#0" expanded="false" />
+                <element signature="e#21089#27082#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShooterLevelOne.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ShooterLevelOne.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ShooterLevelOne.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="5321">
+            <state line="290" column="33" selection-start="10845" selection-end="10845" vertical-scroll-proportion="0.5613208" vertical-offset="0" max-vertical-offset="459">
               <folding>
                 <element signature="e#331#2612#0" expanded="false" />
-                <element signature="e#13481#15004#0" expanded="false" />
+                <element signature="e#2643#10810#0" expanded="false" />
+                <element signature="e#10851#15601#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LevelOneBossTest.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LevelOneBossTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="37" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="94" max-vertical-offset="629">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -150,6 +160,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -411,7 +422,11 @@
       <created>1399338554293</created>
       <updated>1399338554293</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Currently working on adding powerup support and transitioning from bossmode to win screen.">
+      <created>1399510126656</created>
+      <updated>1399510126656</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -430,12 +445,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -453,18 +468,19 @@
     <MESSAGE value="Began altering class structure so that Levels and screens are their own classes." />
     <MESSAGE value="New class structure is working with better support for scene/level changing." />
     <MESSAGE value="New class structure is working with better support for scene/level changing.&#10;&#10;Fixed sprite transparency issue." />
-    <option name="LAST_COMMIT_MESSAGE" value="New class structure is working with better support for scene/level changing.&#10;&#10;Fixed sprite transparency issue." />
+    <MESSAGE value="Currently working on adding powerup support and transitioning from bossmode to win screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Currently working on adding powerup support and transitioning from bossmode to win screen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/Shooter.py</url>
-          <line>383</line>
+          <line>429</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/Shooter.py</url>
-          <line>493</line>
+          <line>539</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -474,9 +490,72 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Shooter.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="379" column="41" selection-start="11942" selection-end="11942" vertical-scroll-proportion="0.0" vertical-offset="6290" max-vertical-offset="14331">
+          <folding>
+            <element signature="e#361#4028#0" expanded="false" />
+            <element signature="e#4059#5547#0" expanded="false" />
+            <element signature="e#5576#7232#0" expanded="false" />
+            <element signature="e#7265#9016#0" expanded="false" />
+            <element signature="e#9056#10150#0" expanded="false" />
+            <element signature="e#10180#10567#0" expanded="false" />
+            <element signature="e#10601#11480#0" expanded="false" />
+            <element signature="e#11519#12416#0" expanded="false" />
+            <element signature="e#12459#12632#0" expanded="false" />
+            <element signature="e#12669#13405#0" expanded="false" />
+            <element signature="e#13450#16817#0" expanded="false" />
+            <element signature="e#16851#17161#0" expanded="false" />
+            <element signature="e#17189#17505#0" expanded="false" />
+            <element signature="e#17533#17759#0" expanded="false" />
+            <element signature="e#17785#18432#0" expanded="false" />
+            <element signature="e#18461#18738#0" expanded="false" />
+            <element signature="e#18770#20799#0" expanded="false" />
+            <element signature="e#20833#21063#0" expanded="false" />
+            <element signature="e#21089#27082#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShooterLevelOne.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="6953">
+          <folding>
+            <element signature="e#331#2612#0" expanded="false" />
+            <element signature="e#2643#10810#0" expanded="false" />
+            <element signature="e#10851#15601#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LevelOneBossTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="37" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="94" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shooter.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="710" column="29" selection-start="21949" selection-end="21949" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13617">
           <folding>
-            <element signature="e#21#34#0" expanded="true" />
+            <element signature="e#361#4028#0" expanded="false" />
+            <element signature="e#4059#5547#0" expanded="false" />
+            <element signature="e#5576#7232#0" expanded="false" />
+            <element signature="e#7265#9016#0" expanded="false" />
+            <element signature="e#9056#10150#0" expanded="false" />
+            <element signature="e#10180#10567#0" expanded="false" />
+            <element signature="e#10601#11480#0" expanded="false" />
+            <element signature="e#11519#12416#0" expanded="false" />
+            <element signature="e#12459#12632#0" expanded="false" />
+            <element signature="e#12669#13405#0" expanded="false" />
+            <element signature="e#13450#16817#0" expanded="false" />
+            <element signature="e#16851#17161#0" expanded="false" />
+            <element signature="e#17189#17505#0" expanded="false" />
+            <element signature="e#17533#17759#0" expanded="false" />
+            <element signature="e#17785#18432#0" expanded="false" />
+            <element signature="e#18461#18738#0" expanded="false" />
+            <element signature="e#18770#20799#0" expanded="false" />
+            <element signature="e#20833#21063#0" expanded="false" />
+            <element signature="e#21089#27082#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -486,7 +565,8 @@
         <state line="216" column="61" selection-start="8537" selection-end="8537" vertical-scroll-proportion="0.0" vertical-offset="3672" max-vertical-offset="5950">
           <folding>
             <element signature="e#331#2612#0" expanded="false" />
-            <element signature="e#13481#15004#0" expanded="false" />
+            <element signature="e#2643#10810#0" expanded="false" />
+            <element signature="e#10851#15601#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -495,7 +575,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="590" column="40" selection-start="17921" selection-end="17921" vertical-scroll-proportion="0.0" vertical-offset="9877" max-vertical-offset="11033">
           <folding>
-            <element signature="e#21#34#0" expanded="true" />
+            <element signature="e#361#4028#0" expanded="false" />
+            <element signature="e#4059#5547#0" expanded="false" />
+            <element signature="e#5576#7232#0" expanded="false" />
+            <element signature="e#7265#9016#0" expanded="false" />
+            <element signature="e#9056#10150#0" expanded="false" />
+            <element signature="e#10180#10567#0" expanded="false" />
+            <element signature="e#10601#11480#0" expanded="false" />
+            <element signature="e#11519#12416#0" expanded="false" />
+            <element signature="e#12459#12632#0" expanded="false" />
+            <element signature="e#12669#13405#0" expanded="false" />
+            <element signature="e#13450#16817#0" expanded="false" />
+            <element signature="e#16851#17161#0" expanded="false" />
+            <element signature="e#17189#17505#0" expanded="false" />
+            <element signature="e#17533#17759#0" expanded="false" />
+            <element signature="e#17785#18432#0" expanded="false" />
+            <element signature="e#18461#18738#0" expanded="false" />
+            <element signature="e#18770#20799#0" expanded="false" />
+            <element signature="e#20833#21063#0" expanded="false" />
+            <element signature="e#21089#27082#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -505,7 +603,8 @@
         <state line="185" column="8" selection-start="6594" selection-end="6616" vertical-scroll-proportion="0.0" vertical-offset="3145" max-vertical-offset="3332">
           <folding>
             <element signature="e#331#2612#0" expanded="false" />
-            <element signature="e#13481#15004#0" expanded="false" />
+            <element signature="e#2643#10810#0" expanded="false" />
+            <element signature="e#10851#15601#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -514,7 +613,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="576" column="24" selection-start="17499" selection-end="17499" vertical-scroll-proportion="0.0" vertical-offset="9792" max-vertical-offset="12393">
           <folding>
-            <element signature="e#21#34#0" expanded="true" />
+            <element signature="e#361#4028#0" expanded="false" />
+            <element signature="e#4059#5547#0" expanded="false" />
+            <element signature="e#5576#7232#0" expanded="false" />
+            <element signature="e#7265#9016#0" expanded="false" />
+            <element signature="e#9056#10150#0" expanded="false" />
+            <element signature="e#10180#10567#0" expanded="false" />
+            <element signature="e#10601#11480#0" expanded="false" />
+            <element signature="e#11519#12416#0" expanded="false" />
+            <element signature="e#12459#12632#0" expanded="false" />
+            <element signature="e#12669#13405#0" expanded="false" />
+            <element signature="e#13450#16817#0" expanded="false" />
+            <element signature="e#16851#17161#0" expanded="false" />
+            <element signature="e#17189#17505#0" expanded="false" />
+            <element signature="e#17533#17759#0" expanded="false" />
+            <element signature="e#17785#18432#0" expanded="false" />
+            <element signature="e#18461#18738#0" expanded="false" />
+            <element signature="e#18770#20799#0" expanded="false" />
+            <element signature="e#20833#21063#0" expanded="false" />
+            <element signature="e#21089#27082#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -524,7 +641,8 @@
         <state line="185" column="8" selection-start="6594" selection-end="6616" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="2839">
           <folding>
             <element signature="e#331#2612#0" expanded="false" />
-            <element signature="e#13481#15004#0" expanded="false" />
+            <element signature="e#2643#10810#0" expanded="false" />
+            <element signature="e#10851#15601#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -541,9 +659,7 @@
     </entry>
     <entry file="file://C:/Python27/Lib/pygame/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="7" selection-start="5180" selection-end="5180" vertical-scroll-proportion="0.0" vertical-offset="9489" max-vertical-offset="26843">
-          <folding />
-        </state>
+        <state line="118" column="7" selection-start="5180" selection-end="5180" vertical-scroll-proportion="0.0" vertical-offset="9489" max-vertical-offset="26843" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LevelOneBossTest.py">
@@ -553,21 +669,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ShooterLevelOne.py">
+    <entry file="file://$PROJECT_DIR$/Shooter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="5321">
+        <state line="21" column="0" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1054">
           <folding>
-            <element signature="e#331#2612#0" expanded="false" />
-            <element signature="e#13481#15004#0" expanded="false" />
+            <element signature="e#361#4028#0" expanded="false" />
+            <element signature="e#4059#5547#0" expanded="false" />
+            <element signature="e#5576#7232#0" expanded="false" />
+            <element signature="e#7265#9016#0" expanded="false" />
+            <element signature="e#9056#10150#0" expanded="false" />
+            <element signature="e#10180#10567#0" expanded="false" />
+            <element signature="e#10601#11480#0" expanded="false" />
+            <element signature="e#11519#12416#0" expanded="false" />
+            <element signature="e#12459#12632#0" expanded="false" />
+            <element signature="e#12669#13405#0" expanded="false" />
+            <element signature="e#13450#16817#0" expanded="false" />
+            <element signature="e#16851#17161#0" expanded="false" />
+            <element signature="e#17189#17505#0" expanded="false" />
+            <element signature="e#17533#17759#0" expanded="false" />
+            <element signature="e#17785#18432#0" expanded="false" />
+            <element signature="e#18461#18738#0" expanded="false" />
+            <element signature="e#18770#20799#0" expanded="false" />
+            <element signature="e#20833#21063#0" expanded="false" />
+            <element signature="e#21089#27082#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shooter.py">
+    <entry file="file://$PROJECT_DIR$/ShooterLevelOne.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="379" column="41" selection-start="11942" selection-end="11942" vertical-scroll-proportion="0.759434" vertical-offset="6121" max-vertical-offset="14331">
+        <state line="290" column="33" selection-start="10845" selection-end="10845" vertical-scroll-proportion="0.5613208" vertical-offset="0" max-vertical-offset="459">
           <folding>
-            <element signature="e#21#34#0" expanded="true" />
+            <element signature="e#331#2612#0" expanded="false" />
+            <element signature="e#2643#10810#0" expanded="false" />
+            <element signature="e#10851#15601#0" expanded="false" />
           </folding>
         </state>
       </provider>
