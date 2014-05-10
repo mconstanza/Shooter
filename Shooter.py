@@ -94,6 +94,8 @@ class Ship(pygame.sprite.Sprite):
         for self in pygame.sprite.groupcollide(playerspritegroup, enemyshots, False, False):
             for shot in pygame.sprite.groupcollide(enemyshots, playerspritegroup, True, False):
                 healthbar.decrease_health(shot.damage)
+                if self.beam != "default":
+                    self.beam = "default"
                 self.shiphit.play()
 
     def enemyCollision(self, playerspritegroup, enemies, healthbar, ticks):
@@ -102,6 +104,8 @@ class Ship(pygame.sprite.Sprite):
             if ticks - self.lastcollision > 500:
                 self.lastcollision = ticks
                 healthbar.decrease_health(20)
+                if self.beam != "default":
+                    self.beam = "default"
                 self.shiphit.play()
             else:
                 pass
@@ -111,24 +115,35 @@ class Ship(pygame.sprite.Sprite):
             for powerup in pygame.sprite.groupcollide(powerupgroup, playerspritegroup, True, False):
                 self.beam = powerup.type
 
+    def asteroidCollision(self, playerspritegroup, asteroidgroup, healthbar, ticks):
+        for self in pygame.sprite.groupcollide(playerspritegroup, asteroidgroup, False, False):
+           for asteroid in pygame.sprite.groupcollide(asteroidgroup, playerspritegroup, False, False):
+                if ticks - self.lastcollision > 500:
+                    self.lastcollision = ticks
+                    healthbar.decrease_health(asteroid.damage)
+                    if self.beam != "default":
+                        self.beam = "default"
+                        self.shiphit.play()
+                else:
+                    pass
 
-    def update(self, sprites, enemies, enemyshots, healthbar, powerupgroup, ticks):
+    def update(self, sprites, enemies, enemyshots, healthbar, powerupgroup, asteroidgroup, ticks):
         self.move(self.xvelocity, self.yvelocity)
         self.shotCollision(sprites, enemyshots, healthbar)
         self.enemyCollision(sprites, enemies, healthbar, ticks)
         self.powerupCollision(sprites, powerupgroup)
+        self.asteroidCollision(sprites, asteroidgroup, healthbar, ticks )
 
     def reset(self, xy):
         self.rect.centerx, self.rect.centery = xy
 
-    def firecurrentshot(self, shotsgroup):
+    def firecurrentshot(self, shotsgroup, ticks):
         if self.beam == "default":
-            self.shot = Shot((self.rect.right - 18.5, self.rect.top), -10)
-            self.shot = Shot((self.rect.right - 18.5, self.rect.top), -10)
+            self.shot = Shot((self.rect.right - 18.5, self.rect.top), -10, ticks)
             shotsgroup.add(self.shot)
             self.lasersound.play()
         elif self.beam == "tribeam":
-            self.shot = TriBeam(shotsgroup, self)
+            self.shot = TriBeam(shotsgroup, self, ticks)
             self.lasersound.play()
 
 class HealthBar(object):
@@ -201,7 +216,6 @@ class KillBar(object):
     def increase_kill_bar(self, enemieskilled):
 
         self.enemieskilled = enemieskilled
-        print "enemieskilled + amount " + str(self.enemieskilled)
         if self.enemieskilled * 2.8 > self.maxkill:
             self.enemieskilled = self.maxkill / 2.8
 
@@ -210,16 +224,13 @@ class KillBar(object):
         if self.enemieskilled < 0:
             self.enemieskilled = 0
 
-    def convert_enemies_killed(self, enemieskilled):
-        return float(enemieskilled * 2.8)
-
     def display(self, screen):
        # load bar background
         screen.blit(self.image, (self.location[0], self.location[1]))
     # build bar rectangle
         self.bar = pygame.Rect(self.topleft[0],\
                                self.topleft[1],\
-                                self.enemieskilled * 2.8,\
+                               ((self.enemieskilled * 280) / 100),\
                                 30)
     # draw bar rectangle
         pygame.draw.rect(screen, self.color, self.bar, 0)
@@ -280,16 +291,17 @@ class Shot(pygame.sprite.Sprite):
     '''
     Sprite for rays the ship shoots.
     '''
-    maxlifetime = 5 # seconds
+    maxlifetime = 3000 # seconds
     damage = 5
 
-    def __init__(self, xy, movementspeed):
+    def __init__(self, xy, movementspeed, ticks):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('beamblue.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.maxspeed = 10
         self.yvelocity = 0
-        self.lifetime = 0.0 # seconds
+        self.lifetime = ticks # seconds
+        self.maxlifetime = 3000 # milliseconds
 
          # set position
         self.rect.centerx, self.rect.centery = xy
@@ -305,14 +317,21 @@ class Shot(pygame.sprite.Sprite):
         '''
         self.rect.y += self.yvelocity
 
-    def update(self, seconds = 0.0):
+    def update(self, ticks):
         '''
         Called to update the sprite. Do this every frame. Handles
         moving the sprite by its velocity.
         '''
         #---kill if too old---
-        self.lifetime += seconds
-        if self.lifetime > Shot.maxlifetime:
+
+        if ticks - self.lifetime > self.maxlifetime:
+            self.kill()
+
+        else:
+            self.lifetime = ticks
+
+        # kill if off screen
+        if self.rect.bottom < 0:
             self.kill()
 
         #---movement---
@@ -320,23 +339,23 @@ class Shot(pygame.sprite.Sprite):
 
 class TriBeam(object):
 
-    def __init__(self, shotsgroup, ship):
+    def __init__(self, shotsgroup, ship, ticks):
         self.yvelocity = -7
-        self.leftshot = Shot((ship.rect.centerx, ship.rect.top),-7 )
+        self.leftshot = Shot((ship.rect.centerx, ship.rect.top),-7, ticks )
         shotsgroup.add(self.leftshot)
-        self.rightshot = Shot((ship.rect.left, ship.rect.top), -7)
+        self.rightshot = Shot((ship.rect.left, ship.rect.top), -7, ticks)
         shotsgroup.add(self.rightshot)
-        self.centershot = Shot((ship.rect.right, ship.rect.top), -7)
+        self.centershot = Shot((ship.rect.right, ship.rect.top), -7, ticks)
         shotsgroup.add(self.centershot)
 
 class BasicEnemyShot(Shot):
-    def __init__(self, xy, movementspeed):
+    def __init__(self, xy, movementspeed, ticks):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('beamred.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.maxspeed = 10
         self.yvelocity = 0
-        self.lifetime = 0.0 # seconds
+        self.lifetime = ticks # seconds
 
          # set position
         self.rect.centerx, self.rect.centery = xy
@@ -345,31 +364,39 @@ class BasicEnemyShot(Shot):
         self.movementspeed = movementspeed
         self.yvelocity += self.movementspeed
 
-        def update(self, seconds = 0.0):
-            '''
-            Called to update the sprite. Do this every frame. Handles
-            moving the sprite by its velocity.
-            '''
+    def update(self, ticks):
+        '''
+        Called to update the sprite. Do this every frame. Handles
+         moving the sprite by its velocity.
+        '''
+
         #---kill if too old---
-            self.lifetime += seconds
-            if self.lifetime > Shot.maxlifetime:
-                self.kill()
+
+        if ticks - self.lifetime > Shot.maxlifetime:
+            self.kill()
+
+        else:
+            self.lifetime = ticks
+
+        # kill if off screen
+        if self.rect.bottom > screen_height or self.rect.top < 0:
+            self.kill()
 
         #---movement---
-            self.move(self.yvelocity)
+        self.move(self.yvelocity)
 
 class Hadouken(BasicEnemyShot):
 
     damage = 25
 
-    def __init__(self, xy, movementspeed):
+    def __init__(self, xy, movementspeed, ticks):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('hadouken.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.maxspeed = 15
         self.yvelocity = 0
-        self.lifetime = 0.0 # seconds
-
+        self.lifetime = ticks # seconds
+        self.maxlifetime = 3000
          # set position
         self.rect.centerx, self.rect.centery = xy
 
@@ -377,14 +404,21 @@ class Hadouken(BasicEnemyShot):
         self.movementspeed = movementspeed
         self.yvelocity += self.movementspeed
 
-        def update(self, seconds = 0.0):
+        def update(self, ticks):
             '''
             Called to update the sprite. Do this every frame. Handles
             moving the sprite by its velocity.
             '''
         #---kill if too old---
-            self.lifetime += seconds
-            if self.lifetime > Shot.maxlifetime:
+
+            if ticks - self.lifetime > Shot.maxlifetime:
+                self.kill()
+
+            else:
+                self.lifetime = ticks
+
+            # kill if off screen
+            if self.rect.top > screen_height:
                 self.kill()
 
         #---movement---
@@ -399,7 +433,7 @@ class PowerUp(pygame.sprite.Sprite):
         raise NotImplementedError
 
 class TriBeamPowerup(PowerUp):
-    def __init__(self):
+    def __init__(self, ticks):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('TriBeamPowerUp.png').convert_alpha()
         self.rect = self.image.get_rect()
@@ -410,22 +444,54 @@ class TriBeamPowerup(PowerUp):
         self.yvelocity = 5
 
         # lifetime
-        self.maxlifetime = 5
-        self.lifetime = 0.0 # seconds
+        self.maxlifetime = 3000 # milliseconds
+        self.lifetime = ticks # milliseconds
 
         # set position
-        self.rect.centerx, self.rect.centery = screen_width / 2, 100
+        self.rect.centerx, self.rect.centery = random.randrange(100, 700, 50), 100
 
     def move(self, yvelocity):
         self.rect.centery += yvelocity
 
-    def update(self, seconds = 0.0):
+    def update(self, ticks):
         # kill if too old
-        self.lifetime += seconds
-        if self.lifetime > self.maxlifetime:
+        if ticks - self.lifetime > self.maxlifetime:
             self.kill()
 
         self.move(self.yvelocity)
+
+class Asteroid(pygame.sprite.Sprite):
+    def __init__(self, yvelocity):
+        '''
+        Asteroid type is a random integer 1-24 that chooses which asteroid is summoned
+        '''
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('asteroid1.png').convert_alpha()
+        self.rect = self.image.get_rect()
+
+        # set position
+        self.rect.centerx = random.randrange(0 + 100, screen_width - 100, 50)
+        self.rect.centery = random.randrange(-50, 100, 10)
+
+        # velocity
+        self.yvelocity = yvelocity
+
+        # damage
+        self.damage = 20
+
+    def render(self):
+        pass
+
+    def update(self, asteroidgroup, shotsgroup):
+        self.move(self.yvelocity)
+        if self.rect.top > screen_height:
+            self.kill()
+        for asteroid in pygame.sprite.groupcollide(asteroidgroup, shotsgroup, False, True):
+            pass
+
+    def move(self, yvelocity):
+        self.rect.y += yvelocity
+
 
 class EnemyShip(pygame.sprite.Sprite):
     '''
@@ -503,7 +569,7 @@ class EnemyShip(pygame.sprite.Sprite):
             self.explosion((self.rect.left, self.rect.top), screen)
             killbar.enemieskilled += 1
             killbar.increase_kill_bar(killbar.enemieskilled)
-            print killbar.enemieskilled
+
 
 
         self.offscreen()
@@ -520,7 +586,7 @@ class EnemyShip(pygame.sprite.Sprite):
         if ticks - self.lastshot > 800:
             self.lastshot = ticks
 
-            self.enemyshot = BasicEnemyShot((self.rect.centerx, self.rect.bottom), 7)
+            self.enemyshot = BasicEnemyShot((self.rect.centerx, self.rect.bottom), 7, ticks)
             enemyshots.add(self.enemyshot)
 
 class EnemySpawner(object):
@@ -589,6 +655,9 @@ class Level(Scene):
     def powerup_roll(self, percentchance):
         raise NotImplementedError
     def spawn_powerup(self):
+        raise NotImplementedError
+
+    def spawn_enemies(self, enemieslist, maxenemies, ticks, lastEnemySpawned, spawntime):
         raise NotImplementedError
 
 class BossMode(Scene):
@@ -678,6 +747,46 @@ class SceneManager(object):
     def go_to(self, scene):
         self.scene = scene
         self.scene.manager = self
+
+class WinScreen(Scene):
+    def __init__(self):
+        pygame.mixer.pre_init(44100, -16, 2, 2048)
+
+        self.music = pygame.mixer.music.load('02 Chemical Reaction.mp3')
+        pygame.mixer.music.play()
+
+    def render(self, screen):
+        # Create Title text
+        self.winScreenFont = pygame.font.Font('freesansbold.ttf', 44)
+        self.winScreenSurf = self.winScreenFont.render('You Win!', True, white)
+        self.degrees1 = 0
+
+
+        # Render surfaces
+        screen.fill(black)
+        self.winScreenSurf = pygame.transform.rotate(self.winScreenSurf, self.degrees1)
+        placement_rect1 = self.winScreenSurf.get_rect()
+        placement_rect1.center = (screen_width / 2, screen_height / 2)
+
+
+        # Draw them to the screen
+        screen.blit(self.winScreenSurf, placement_rect1)
+
+    def update(self, screen):
+        pass
+
+    def handle_events(self, events):
+
+        # poll for events
+        for event in events:
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+        # handle user input
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
 
 class Game(object):
     '''Handles initialization of PyGame and sets up game'''
