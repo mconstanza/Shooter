@@ -8,6 +8,7 @@ import os
 import math
 import pyganim
 import time
+from gameobjects.gametime import GameClock
 from pygame.locals import Color
 from ShooterLevelOne import*
 
@@ -21,6 +22,9 @@ blue = [15, 7, 166]
 white = [255, 255, 255]
 red = [89, 0 ,1]
 
+GAME_TICKS = 60
+
+game_clock = GameClock(GAME_TICKS)
 
 def load_image(name):
     image = pygame.image.load(name).convert_alpha()
@@ -1044,7 +1048,7 @@ class Game(object):
         manager = SceneManager(screen)
 
         # initialize clock
-        timer = pygame.time.Clock()
+        clock = pygame.time.Clock()
 
         # gameover variable
         gameover = False
@@ -1052,13 +1056,16 @@ class Game(object):
 
         running = True
 
+
+        # start game clock
+        game_clock.start()
         # run until something tells us to stop
 
         while running:
 
             #tick pygame clock
             #limit fps
-            timer.tick(60)
+            clock.tick(60)
 
             # if game is not over
             if gameover == False:
@@ -1066,7 +1073,7 @@ class Game(object):
                 #handle pygame events
 
                 # update title bar with fps
-                pygame.display.set_caption('Shooter  %d fps' % timer.get_fps())
+                pygame.display.set_caption('Shooter  %d fps' % clock.get_fps())
 
                 # main loop
                 manager.scene.handle_events(pygame.event.get())
